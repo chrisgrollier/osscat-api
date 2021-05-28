@@ -1,0 +1,19 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AUTH_ISSUER_URI:https://identity.oraclecloud.com/}
+#          jwk-set-uri: https://localhost:8543/auth/realms/chris02/protocol/openid-connect/certs
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: osscat-api
+      client-secret: "BOoybw8Vi>Lwj8]#.q};"
+      scopes:
+      - openid
+        read
+        write
+        create
+      realm: chris02
+
