@@ -3,17 +3,17 @@ spring:
     oauth2:
       resourceserver:
         jwt:
+          jwsAlgorithm: HS256
 #          issuer-uri: ${AUTH_ISSUER_URI:https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com/}
           jwk-set-uri: https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com:443/admin/v1/SigningCert/jwk
 springdoc:
   swagger-ui:
     oauth:
-      client-id: osscat-api
-      client-secret: "BOoybw8Vi>Lwj8]#.q};"
+      client-id: e64fe89cb042467d9464bb9bbef3f5b7
+      client-secret: bc0db52d-fa19-4ca7-b18f-c7b09a703ef5
       scopes:
       - openid
         read
         write
         create
-      realm: chris02
 
