@@ -3,7 +3,6 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwsAlgorithm: HS256
 #          issuer-uri: ${AUTH_ISSUER_URI:https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com/}
           jwk-set-uri: https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com:443/admin/v1/SigningCert/jwk
 springdoc:
