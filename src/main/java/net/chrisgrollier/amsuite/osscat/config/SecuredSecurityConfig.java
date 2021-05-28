@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.security.OAuthFlows;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 
 @Configuration
-@Profile("secured")
+@Profile("prod")
 @OpenAPIDefinition(info = @Info(title = "Open Source Software Catalog API", version = "v1"))
 //@formatter:off
 @SecurityScheme(

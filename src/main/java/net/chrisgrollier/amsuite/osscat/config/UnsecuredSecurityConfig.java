@@ -6,7 +6,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-@Profile("!secured")
+@Profile("!prod")
 public class UnsecuredSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override

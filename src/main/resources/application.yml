@@ -5,32 +5,16 @@ spring:
     servlet:
       path: /api/v1
   datasource:
-    url: jdbc:oracle:thin:@db202105151827_high?TNS_ADMIN=E:/Users/Papa/OracleWallet/DB202105151827
-    username: ARTEFACTS
-    password: Dsiocc8vl2vm
-    type: oracle.ucp.jdbc.PoolDataSource
-    oracleucp:
-      initial-pool-size: 2
-      min-pool-size: 2
-      max-pool-size: 5
+    url: ${DATASOURCE_URL:jdbc:h2:mem:osscat-mem}
+    username: ${DATASOURCE_USER:sa}
+    password: ${DATASOURCE_PASS:}
   jpa:
     open-in-view: true
     show-sql: ${JPA_SHOW_SQL:false}
-    database-platform: ${JPA_PLATFORM:org.hibernate.dialect.Oracle12cDialect}
+    database-platform: ${JPA_PLATFORM:org.hibernate.dialect.H2Dialect}
     generate-ddl: ${JPA_GENERATE_DDL:true}
     hibernate:
       ddl-auto: ${JPA_HIBERNATE_DDL_AUTO:update}
-springdoc:
-  swagger-ui:
-    oauth:
-      client-id: osscat-api
-      client-secret: c80229cc-2a8d-4517-8c2e-bebd692eb5a0
-      scopes:
-      - openid
-        read
-        write
-        create
-      realm: chris02
 logging:
   level: 
     '[net.chrisgrollier.amsuite.osscat]': ${VERBOSE:WARN}

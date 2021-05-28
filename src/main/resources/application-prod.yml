@@ -1,7 +1,30 @@
 spring:
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:oracle:thin:@db202105151827_high?TNS_ADMIN=E:/Users/Papa/OracleWallet/DB202105151827}
+    username: ${DATASOURCE_USER:ARTEFACTS}
+    password: ${DATASOURCE_PASS:Dsiocc8vl2vm}
+    type: oracle.ucp.jdbc.PoolDataSource
+    oracleucp:
+      initial-pool-size: 2
+      min-pool-size: 2
+      max-pool-size: 5
+  jpa:
+    database-platform: ${JPA_PLATFORM:org.hibernate.dialect.Oracle12cDialect}
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: ${AUTH_ISSUER_URI:http://localhost:8180/auth/realms/chris02}
 #          jwk-set-uri: https://localhost:8543/auth/realms/chris02/protocol/openid-connect/certs
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: osscat-api
+      client-secret: c80229cc-2a8d-4517-8c2e-bebd692eb5a0
+      scopes:
+      - openid
+        read
+        write
+        create
+      realm: chris02
+
