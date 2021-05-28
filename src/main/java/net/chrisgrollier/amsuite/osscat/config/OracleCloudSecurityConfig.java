@@ -13,10 +13,11 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.OAuthFlow;
 import io.swagger.v3.oas.annotations.security.OAuthFlows;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.annotations.servers.Server;
 
 @Configuration
 @Profile("oracle")
-@OpenAPIDefinition(info = @Info(title = "Open Source Software Catalog API", version = "v1"))
+@OpenAPIDefinition(info = @Info(title = "Open Source Software Catalog API", version = "v1"), servers = {@Server(url = "https://132.145.60.143/apicat")})
 //@formatter:off
 @SecurityScheme(
 		name = "bearerAuth", 
@@ -25,10 +26,11 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 			@OAuthFlow(
 					authorizationUrl = "https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com:443/oauth2/v1/authorize",
 					tokenUrl = "https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com:443/oauth2/v1/token"
+					
 					)
 		), 
 		openIdConnectUrl = "https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com/.well-known/openid-configuration", 
-		bearerFormat = "JWT", 
+		bearerFormat = "JWT",  
 		scheme = "bearer")
 //@formatter:on
 public class OracleCloudSecurityConfig extends WebSecurityConfigurerAdapter {
