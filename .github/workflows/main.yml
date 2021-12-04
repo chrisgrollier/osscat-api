@@ -1,16 +1,16 @@
-name: Main branch
+name: master branch
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
   workflow_dispatch:
 
 jobs:
   test:
-    name: Unit-Test
+    name: Unit Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -24,7 +24,7 @@ jobs:
         run: mvn -B clean verify -DskipTests
 
   sonar:
-    name: Code-Quality Check
+    name: Code Quality Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -46,6 +46,12 @@ jobs:
       REPO: ${{ secrets.DOCKER_REPO }}
     steps:
       - uses: actions/checkout@v1
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Maven Package
+        run: mvn -B clean package -DskipTess
       - name: Docker Hub Sign-in
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Building Docker Image
