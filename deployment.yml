@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: osscat-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: osscat-api
+  template:
+    metadata:
+      labels:
+        app: osscat-api
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: osscat-api
+        image: chrisgrollier/osscat-api:latest
+        env:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+          limits:
+            cpu: 250m
+            memory: 512Mi
+        ports:
+        - containerPort: 8081
+          name: osscat
