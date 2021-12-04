@@ -53,7 +53,7 @@ jobs:
       - name: Maven Package
         run: mvn -B clean package -DskipTess
       - name: Docker Hub Sign-in
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p "${{ secrets.DOCKER_PASSWORD }}"
       - name: Building Docker Image
         run: docker build -t $REPO:latest -t $REPO:${GITHUB_RUN_ID} .
       - name: Publish Docker Image
