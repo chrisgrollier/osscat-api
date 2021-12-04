@@ -11,14 +11,14 @@ jobs:
     - uses: azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        cluster-name: ${{ env.CLUSTER_NAME }}
-        resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+        cluster-name: ${{ secrets.CLUSTER_NAME }}
+        resource-group: ${{ secrets.CLUSTER_RESOURCE_GROUP }}
     - run: |
-        kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
+        kubectl create namespace ${{ secrets.NAMESPACE }} --dry-run -o json | kubectl apply -f -
    
     - uses: azure/k8s-deploy@v1
       with:
         manifests: |
           deployment.yml
           service.yml
-        namespace: ${{ env.NAMESPACE }}
+        namespace: ${{ secrets.NAMESPACE }}
