@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: osscat-api
 spec:
+  type: LoadBalancer
   ports:
   - port: 8081
   selector:
